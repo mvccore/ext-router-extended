@@ -70,13 +70,6 @@ trait Extended
 	 */
 	protected $session = NULL;
 
-	/**
-	 * Reference to `\MvcCore\Application::GetInstance();` 
-	 * to not call this very time we need app instance.
-	 * @var \MvcCore\Application|\MvcCore\Interfaces\IApplication|NULL
-	 */
-	protected static $application = NULL;
-
 	
 	/*************************************************************************************
 	 *                                  Public Methods                                   *
@@ -134,7 +127,7 @@ trait Extended
 	 */
 	protected function setUpSession () {
 		if ($this->session === NULL) {
-			$sessionClass = static::$application->GetSessionClass();
+			$sessionClass = $this->application->GetSessionClass();
 			$this->session = $sessionClass::GetNamespace(__CLASS__);
 			$this->session->SetExpirationSeconds($this->sessionExpirationSeconds);
 		}
@@ -149,9 +142,8 @@ trait Extended
 	 */
 	protected function removeDefaultCtrlActionFromGlobalGet () {
 		if ($this->requestGlobalGet) {
-			$app = \MvcCore\Application::GetInstance();
-			$toolClass = $app->GetToolClass();
-			list($dfltCtrlPc, $dftlActionPc) = $app->GetDefaultControllerAndActionNames();
+			$toolClass = $this->application->GetToolClass();
+			list($dfltCtrlPc, $dftlActionPc) = $this->application->GetDefaultControllerAndActionNames();
 			$dfltCtrlDc = $toolClass::GetDashedFromPascalCase($dfltCtrlPc);
 			$dftlActionDc = $toolClass::GetDashedFromPascalCase($dftlActionPc);
 			if (isset($this->requestGlobalGet['controller']) && isset($this->requestGlobalGet['action']))
