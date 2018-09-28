@@ -13,6 +13,15 @@
 
 namespace MvcCore\Ext\Routers;
 
+/**
+ * Responsibility: configurable protected properties with getters and setters,
+ *				   internal protected properties and internal methods used 
+ *				   in most extended router implementations bellow.
+ * Trait for classes:
+ * - `\MvcCore\Ext\Routers\Media`
+ * - `\MvcCore\Ext\Routers\Localization`
+ * - `\MvcCore\Ext\Routers\MediaAndLocalization`
+ */
 trait Extended
 {
 	/**
@@ -95,7 +104,7 @@ trait Extended
 	 * Set `TRUE` to route site version only for `GET` requests. 
 	 * `FALSE` to process advanced routing on all requests.
 	 * @param bool $routeGetRequestsOnly 
-	 * @return \MvcCore\Router|\MvcCore\Ext\Routers\Extended|\MvcCore\Ext\Routers\IExtended
+	 * @return \MvcCore\Router|\MvcCore\IRouter|\MvcCore\Ext\Routers\Extended|\MvcCore\Ext\Routers\IExtended
 	 */
 	public function & SetRouteGetRequestsOnly ($routeGetRequestsOnly = TRUE) {
 		$this->routeGetRequestsOnly = $routeGetRequestsOnly;
@@ -129,7 +138,7 @@ trait Extended
 	 * key with different site version:
 	 * `$this->Url('self', ['media_version' => 'mobile', 'lang'	=> 'de']);`.
 	 * @param bool $stricModeBySession
-	 * @return \MvcCore\Router|\MvcCore\Ext\Routers\Extended|\MvcCore\Ext\Routers\IExtended
+	 * @return \MvcCore\Router|\MvcCore\IRouter|\MvcCore\Ext\Routers\Extended|\MvcCore\Ext\Routers\IExtended
 	 */
 	public function & SetStricModeBySession ($stricModeBySession = TRUE) {
 		$this->stricModeBySession = $stricModeBySession;
@@ -169,7 +178,7 @@ trait Extended
 	 * url switch param (always automaticly added by `Url()` method). Because without it, 
 	 * user is redirected strictly back into the same version.
 	 * @param int $sessionExpirationSeconds
-	 * @return \MvcCore\Router|\MvcCore\Ext\Routers\Extended|\MvcCore\Ext\Routers\IExtended
+	 * @return \MvcCore\Router|\MvcCore\IRouter|\MvcCore\Ext\Routers\Extended|\MvcCore\Ext\Routers\IExtended
 	 */
 	public function & SetSessionExpirationSeconds ($sessionExpirationSeconds = 0) {
 		$this->sessionExpirationSeconds = $sessionExpirationSeconds;
