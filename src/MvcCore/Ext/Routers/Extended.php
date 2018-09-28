@@ -73,7 +73,7 @@ trait Extended
 	/**
 	 * Session namespace to store previously recognized site version by user agent
 	 * or by http headers to not do this every time, because it's time consuming.
-	 * @var \MvcCore\Session|\MvcCore\Interfaces\ISession|NULL
+	 * @var \MvcCore\Session|\MvcCore\ISession|NULL
 	 */
 	protected $session = NULL;
 
