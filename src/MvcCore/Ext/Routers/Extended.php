@@ -61,6 +61,27 @@ trait Extended
 	 ************************************************************************************/
 
 	/**
+	 * Base authentication module class name. `\MvcCore\Ext\Auth` by default.
+	 * This class name is used internally to try to get user instance to recognize 
+	 * admin requests: `\MvcCore\Ext\Auth::GetInstance()->GetUser();`.
+	 * @var string
+	 */
+	protected static $baseAuthClass = '\MvcCore\Ext\Auth';
+
+	/**
+	 * Administration request query string param name to recognize administration
+	 * requests if this param exists in global `$_GET` array. `admin` by default.
+	 * @var string
+	 */
+	protected static $adminRequestQueryParamName = 'admin';
+
+	/**
+	 * Boolean flag if request is in administration or not. `FALSE` by default.
+	 * @var bool
+	 */
+	protected $adminRequest = FALSE;
+
+	/**
 	 * `TRUE` to route media site version or to route localization only for `GET` 
 	 * requests. `FALSE` to process advanced routing on all requests.
 	 * @var bool
@@ -184,7 +205,6 @@ trait Extended
 		$this->sessionExpirationSeconds = $sessionExpirationSeconds;
 		return $this;
 	}
-
 	
 	/*************************************************************************************
 	 *                                 Protected Methods                                 *
@@ -213,6 +233,20 @@ trait Extended
 		// Set up session object to look inside for something from previous requests. 
 		// This command starts the session if not started yet.
 		$this->setUpSession();
+
+		// Try to recognize administration request by `admin` param in query string
+		// and by any authenticated user. The boolean flag `$this->adminRequest`
+		// is used only to not process strict session mode redirections and to serve
+		// requested documents directly, so there is not necessary to check if user
+		// has any privileges or not, because this is only router.
+		if (isset($this->requestGlobalGet[static::$adminRequestQueryParamName])) {
+			$authClass = static::$baseAuthClass;
+			if (class_exists($authClass)) {
+				$user = $authClass::GetInstance()->GetUser();
+				if ($user !== NULL) 
+					$this->adminRequest = TRUE;
+			}
+		}
 	}
 
 	/**
