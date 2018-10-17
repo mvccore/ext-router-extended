@@ -51,6 +51,8 @@ trait Redirect
 		
 		if ($this->request->GetFullUrl() === $targetUrl) return TRUE;
 
+		//x([$urlBaseSection, $urlPathWithQuerySection, $systemParams, $urlPathWithQueryIsHome]);
+		//xxx($targetUrl);
 		$this->redirect($targetUrl, $this->redirectStatusCode);
 
 		return FALSE;

@@ -24,6 +24,8 @@ namespace MvcCore\Ext\Routers\Extendeds;
  */
 trait Url
 {
+	protected abstract function urlByRouteSections (\MvcCore\IRoute & $route, array & $params = [], $urlParamRouteName = NULL);
+
 	/**
 	 * Get `TRUE` if path with query string target homepage - `/` (or `/index.php` - request script name)
 	 * @param string $pathWithQueryString URL path part with possible query string.
@@ -48,7 +50,7 @@ trait Url
 	protected function urlByRoutePrefixSystemParams ($urlBaseSection, $urlPathWithQuerySection, array $systemParams = [], $urlPathWithQueryIsHome = NULL) {
 		// complete prefixes section from system params
 		$urlPrefixesSection = trim(implode('/', array_values($systemParams)), '/');
-		$urlPrefixesSectionHasValue = $urlPrefixesSection !== $urlPrefixesSection;
+		$urlPrefixesSectionHasValue = $urlPrefixesSection !== '';
 
 		if ($urlPrefixesSectionHasValue) {
 			$urlPrefixesSection = '/' . $urlPrefixesSection;
@@ -61,7 +63,7 @@ trait Url
 					$urlPathWithQuerySection = ltrim($urlPathWithQuerySection, '/');	
 			}
 		}
-
+		//x([func_get_args(), $urlBaseSection, $urlPrefixesSection, $urlPathWithQuerySection]);
 		return $urlBaseSection . $urlPrefixesSection . $urlPathWithQuerySection;
 	}
 }
