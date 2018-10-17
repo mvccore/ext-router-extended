@@ -206,53 +206,16 @@ trait Extended
 		return $this;
 	}
 
-	/**
-	 * Complete non-absolute, non-localized url by route instance reverse info.
-	 * If there is key `media_version` in `$params`, unset this param before
-	 * route url completing and choose by this param url prefix to prepend 
-	 * completed url string.
-	 * If there is key `localization` in `$params`, unset this param before
-	 * route url completing and place this param as url prefix to prepend 
-	 * completed url string and to prepend media site version prefix.
-	 * Example:
-	 *	Input (`\MvcCore\Route::$reverse`):
-	 *		`"/products-list/<name>/<color>"`
-	 *	Input ($params):
-	 *		`array(
-	 *			"name"			=> "cool-product-name",
-	 *			"color"			=> "red",
-	 *			"variant"		=> ["L", "XL"],
-	 *			"media_version"	=> "mobile",
-	 *			"localization"	=> "en-US",
-	 *		);`
-	 *	Output:
-	 *		`/application/base-bath/m/en-US/products-list/cool-product-name/blue?variant[]=L&amp;variant[]=XL"`
-	 * @param \MvcCore\Route|\MvcCore\IRoute &$route
-	 * @param array $params
-	 * @param string $urlParamRouteName
-	 * @return string
-	 */
-	public function UrlByRoute (\MvcCore\IRoute & $route, array & $params = [], $urlParamRouteName = NULL) {
-		return implode('', $this->urlByRouteComponents($route, $params, $urlParamRouteName));
-	}
 	
 	/*************************************************************************************
 	 *                                 Protected Methods                                 *
 	 ************************************************************************************/
 
 	/**
-	 * TODO: dopsat, že se má vrátit base part, prefixový part a path with query part
-	 * @param \MvcCore\IRoute $route 
-	 * @param array $params 
-	 * @param string $urlParamRouteName 
-	 */
-	protected abstract function urlByRouteComponents (\MvcCore\IRoute & $route, array & $params = [], $urlParamRouteName = NULL);
-
-	/**
 	 * Prepare extended router media site version or localization processing.
 	 * @return void
 	 */
-	protected function preRoutePrepare () {
+	protected function prepare () {
 		$request = & $this->request;
 
 		// store original path value for later use
