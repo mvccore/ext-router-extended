@@ -27,7 +27,7 @@ trait Redirect
 	/**
 	 * Redirect to target media site version and localization version with path and query string.
 	 * @param array $systemParams 
-	 * @return bool
+	 * @return array `string $urlBaseSection, string $urlPathWithQuerySection, array $systemParams, bool|NULL $urlPathWithQueryIsHome`
 	 */
 	protected abstract function redirectToVersionSections ($systemParams);
 
