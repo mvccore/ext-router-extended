@@ -49,10 +49,13 @@ trait Redirect
 			$urlBaseSection, $urlPathWithQuerySection, $systemParams, $urlPathWithQueryIsHome
 		);
 		
-		if ($this->request->GetFullUrl() === $targetUrl) return TRUE;
+		
+		/** @var $req \MvcCore\Request */
+		$req = & $this->request;
+		$fullOriginalUrl = $req::HtmlSpecialChars($req->GetBaseUrl() . $req->GetOriginalPath() . $req->GetQuery(TRUE, TRUE));
+		
+		if ($fullOriginalUrl === $targetUrl) return TRUE;
 
-		//x([$urlBaseSection, $urlPathWithQuerySection, $systemParams, $urlPathWithQueryIsHome]);
-		//xxx($targetUrl);
 		$this->redirect($targetUrl, $this->redirectStatusCode);
 
 		return FALSE;
