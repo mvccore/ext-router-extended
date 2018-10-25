@@ -49,10 +49,12 @@ trait Redirect
 			$urlBaseSection, $urlPathWithQuerySection, $systemParams, $urlPathWithQueryIsHome
 		);
 		
+		$questionMarkPos = mb_strpos($targetUrl, '?');
+		if ($questionMarkPos !== FALSE) $targetUrl = mb_substr($targetUrl, 0, $questionMarkPos);
 		
 		/** @var $req \MvcCore\Request */
 		$req = & $this->request;
-		$fullOriginalUrl = $req::HtmlSpecialChars($req->GetBaseUrl() . $req->GetOriginalPath() . $req->GetQuery(TRUE, TRUE));
+		$fullOriginalUrl = $req->GetBaseUrl() . $req->GetOriginalPath();
 		
 		if ($fullOriginalUrl === $targetUrl) return TRUE;
 

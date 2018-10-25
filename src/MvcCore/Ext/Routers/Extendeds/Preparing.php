@@ -32,7 +32,7 @@ trait Preparing
 		$request = & $this->request;
 
 		// store original path value for later use
-		$request->SetOriginalPath($request->GetPath());
+		$request->SetOriginalPath($request->GetPath(TRUE));
 
 		// switching media site version and targeting localized version 
 		// will be only by GET method, other methods are not very usefull 
