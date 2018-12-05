@@ -52,9 +52,9 @@ trait Redirect
 		$questionMarkPos = mb_strpos($targetUrl, '?');
 		if ($questionMarkPos !== FALSE) $targetUrl = mb_substr($targetUrl, 0, $questionMarkPos);
 		
-		/** @var $req \MvcCore\Request */
-		$req = & $this->request;
-		$fullOriginalUrl = $req->GetBaseUrl() . $req->GetOriginalPath();
+		/** @var $request \MvcCore\Request */
+		$request = & $this->request;
+		$fullOriginalUrl = $request->GetBaseUrl() . $request->GetOriginalPath();
 		
 		if ($fullOriginalUrl === $targetUrl) return TRUE;
 

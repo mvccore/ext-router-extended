@@ -35,13 +35,13 @@ trait Preparing
 		$request->SetOriginalPath($request->GetPath(TRUE));
 
 		// switching media site version and targeting localized version 
-		// will be only by GET method, other methods are not very usefull 
+		// will be only by GET method, other methods are not very useful 
 		// to localize or target for media site version. It adds only another
-		// not much usefull route records to route processing:
+		// not much useful route records to route processing:
 		$this->isGet = $request->GetMethod() == \MvcCore\IRequest::METHOD_GET;
 		
 		// look into request params if there is any switching 
-		// parametter for session strict mode
+		// parameter for session strict mode
 		$this->requestGlobalGet = array_merge([], $request->GetGlobalCollection('get')); // clone `$_GET`
 		
 		// Set up session object to look inside for something from previous requests. 
