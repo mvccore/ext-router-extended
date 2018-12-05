@@ -72,7 +72,8 @@ trait Preparing
 	protected function setUpSession () {
 		if ($this->session === NULL) {
 			$sessionClass = $this->application->GetSessionClass();
-			$this->session = $sessionClass::GetNamespace(__CLASS__);
+			$selfClass = version_compare(PHP_VERSION, '5.5', '>') ? self::class : __CLASS__;
+			$this->session = $sessionClass::GetNamespace($selfClass);
 			$this->session->SetExpirationSeconds($this->sessionExpirationSeconds);
 		}
 	}
