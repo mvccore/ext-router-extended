@@ -40,11 +40,24 @@ trait Url
 	}
 
 	/**
-	 * TODO: dopsat
-	 * @param string $urlBaseSection URL section with domain part and possible base path part.
-	 * @param string $urlPathWithQuerySection URL section with path and query string.
-	 * @param array $systemParams System params to create URL prefixes from array values.
-	 * @param bool $urlPathWithQueryIsHome `TRUE` if URL section with path and query string targets `/`  (or `/index.php` - request script name)
+	 * Complete final URL, simply concatenate strings from three given sources:
+	 * - `$urlBaseSection`
+	 *   - Begin URL part containing http, domain and base path like:
+	 *     `https://domain.com/path/to/app`
+	 * - `$urlPathWithQuerySection`
+	 *   - Subject url part with application path and possible query string:
+	 *     `/some/path?with=query`
+	 * - `$systemParams`
+	 *   - Array to implode it's values into string with system params 
+	 *     like media site version or localization:
+	 *     `['media_version' => 'm', 'localization' => 'en-US']`
+	 * Example output:
+	 * - `https://domain.com/path/to/app/m/en-US/some/path?with=query`
+	 * @param string	$urlBaseSection				URL section with domain part and possible base path part.
+	 * @param string	$urlPathWithQuerySection	URL section with path and query string.
+	 * @param array		$systemParams				System params to create URL prefixes from array values.
+	 * @param bool		$urlPathWithQueryIsHome		`TRUE` if URL section with path and query string targets `/` 
+	 *												(or `/index.php` - request script name)
 	 * @return string
 	 */
 	protected function urlByRoutePrefixSystemParams ($urlBaseSection, $urlPathWithQuerySection, array $systemParams = [], $urlPathWithQueryIsHome = NULL) {
