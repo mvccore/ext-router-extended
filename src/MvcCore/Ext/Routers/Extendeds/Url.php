@@ -24,6 +24,39 @@ namespace MvcCore\Ext\Routers\Extendeds;
  */
 trait Url
 {
+	/**
+	 * Complete semi-finished result URL as two section strings and system 
+	 * params array. First section as base section with scheme, domain and base 
+	 * path, second section as application requested path and query string and 
+	 * third section as system params like `localization` or `media_version`.
+	 * Those params could be inserted between first two sections as system 
+	 * params in result URL by router behaviour and default values. Or it could 
+	 * be inserted into domain part in more extended routers.
+	 * Example:
+	 *	Input (`\MvcCore\Route::$reverse`):
+	 *	`[
+	 *		"en"	=> "/products-list/<name>/<color>"`,
+	 *		"de"	=> "/produkt-liste/<name>/<color>"`,
+	 *	]`
+	 *	Input ($params):
+	 *		`array(
+	 *			"name"			=> "cool-product-name",
+	 *			"color"			=> "red",
+	 *			"variant"		=> ["L", "XL"],
+	 *			"localization"	=> "en-US",
+	 *			"media_version"	=> "mobile",
+	 *		);`
+	 *	Output:
+	 *		`[
+	 *			"/application/base/bath", 
+	 *			"/products-list/cool-product-name/blue?variant[]=L&amp;variant[]=XL", 
+	 *			["media_version" => "m", "localization" => "en-US"]
+	 *		]`
+	 * @param \MvcCore\Route|\MvcCore\IRoute & $route
+	 * @param array $params
+	 * @param string $urlParamRouteName
+	 * @return array `string $urlBaseSection, string $urlPathWithQuerySection, array $systemParams`
+	 */
 	protected abstract function urlByRouteSections (\MvcCore\IRoute & $route, array & $params = [], $urlParamRouteName = NULL);
 
 	/**
