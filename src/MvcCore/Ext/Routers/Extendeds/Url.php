@@ -76,7 +76,7 @@ trait Url
 					$urlPathWithQuerySection = ltrim($urlPathWithQuerySection, '/');	
 			}
 		}
-		//x([func_get_args(), $urlBaseSection, $urlPrefixesSection, $urlPathWithQuerySection]);
+
 		return $urlBaseSection . $urlPrefixesSection . $urlPathWithQuerySection;
 	}
 }

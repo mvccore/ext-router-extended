@@ -16,7 +16,7 @@ namespace MvcCore\Ext\Routers;
 /**
  * Responsibility: configurable protected properties with getters and setters,
  *				   internal protected properties and internal methods used 
- *				   in most extended router implementations bellow.
+ *				   in most extended routers implementations bellow.
  * Trait for classes:
  * - `\MvcCore\Ext\Routers\Media`
  * - `\MvcCore\Ext\Routers\Localization`
