@@ -24,6 +24,13 @@ namespace MvcCore\Ext\Routers;
  */
 trait Extended
 {
+	/**
+	 * MvcCore Extension - Router Media - version:
+	 * Comparison by PHP function version_compare();
+	 * @see http://php.net/manual/en/function.version-compare.php
+	 */
+	const VERSION = '5.0.0-alpha';
+
 	use \MvcCore\Ext\Routers\Extendeds\PropsGettersSetters;
 	use \MvcCore\Ext\Routers\Extendeds\Preparing;
 	use \MvcCore\Ext\Routers\Extendeds\RedirectHelpers;
