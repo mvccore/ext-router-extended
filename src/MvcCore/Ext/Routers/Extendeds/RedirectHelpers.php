@@ -37,12 +37,12 @@ trait RedirectHelpers
 			list($dfltCtrlPc, $dftlActionPc) = $this->application->GetDefaultControllerAndActionNames();
 			$dfltCtrlDc = $toolClass::GetDashedFromPascalCase($dfltCtrlPc);
 			$dftlActionDc = $toolClass::GetDashedFromPascalCase($dftlActionPc);
-			if (isset($this->requestGlobalGet['controller']) && isset($this->requestGlobalGet['action']))
+			if (isset($this->requestGlobalGet[static::URL_PARAM_CONTROLLER]) && isset($this->requestGlobalGet[static::URL_PARAM_ACTION]))
 				if (
-					$this->requestGlobalGet['controller'] == $dfltCtrlDc && 
-					$this->requestGlobalGet['action'] == $dftlActionDc
+					$this->requestGlobalGet[static::URL_PARAM_CONTROLLER] == $dfltCtrlDc && 
+					$this->requestGlobalGet[static::URL_PARAM_ACTION] == $dftlActionDc
 				)
-					unset($this->requestGlobalGet['controller'], $this->requestGlobalGet['action']);
+					unset($this->requestGlobalGet[static::URL_PARAM_CONTROLLER], $this->requestGlobalGet[static::URL_PARAM_ACTION]);
 		}
 	}
 
