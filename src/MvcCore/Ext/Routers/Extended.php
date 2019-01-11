@@ -29,7 +29,7 @@ trait Extended
 	 * Comparison by PHP function version_compare();
 	 * @see http://php.net/manual/en/function.version-compare.php
 	 */
-	const VERSION = '5.0.0-alpha';
+	#const VERSION = '5.0.0-alpha';
 
 	use \MvcCore\Ext\Routers\Extendeds\PropsGettersSetters;
 	use \MvcCore\Ext\Routers\Extendeds\Preparing;
