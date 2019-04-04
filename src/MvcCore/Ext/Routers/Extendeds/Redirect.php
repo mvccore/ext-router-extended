@@ -44,7 +44,7 @@ trait Redirect
 		// and if path with query string url section targeting `/` or `/index.php`
 		list ($urlBaseSection, $urlPathWithQuerySection, $systemParams, $urlPathWithQueryIsHome) 
 			= $this->redirectToVersionSections($systemParams);
-
+		
 		$targetUrl = $this->urlByRoutePrefixSystemParams(
 			$urlBaseSection, $urlPathWithQuerySection, $systemParams, $urlPathWithQueryIsHome
 		);
@@ -54,7 +54,7 @@ trait Redirect
 		
 		/** @var $request \MvcCore\Request */
 		$request = & $this->request;
-		$fullOriginalUrl = $request->GetBaseUrl() . $request->GetOriginalPath();
+		$fullOriginalUrl = $request->GetBaseUrl() . $request->GetOriginalPath() . $request->GetQuery(TRUE);
 		
 		if ($fullOriginalUrl === $targetUrl) return TRUE;
 
