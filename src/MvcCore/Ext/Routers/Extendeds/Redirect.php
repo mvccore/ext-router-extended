@@ -58,7 +58,7 @@ trait Redirect
 		
 		if ($fullOriginalUrl === $targetUrl) return TRUE;
 
-		$this->redirect($targetUrl, $this->redirectStatusCode);
+		$this->redirect($targetUrl, $this->redirectStatusCode, 'Extended router redirect');
 
 		return FALSE;
 	}
