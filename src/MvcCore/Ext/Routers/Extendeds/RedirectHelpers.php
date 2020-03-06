@@ -53,7 +53,7 @@ trait RedirectHelpers
 	protected function redirectAddAllRemainingInGlobalGet (& $targetUrl) {
 		if ($this->requestGlobalGet) {
 			$amp = $this->getQueryStringParamsSepatator();
-			//foreach ($this->requestGlobalGet as $paramName => & $paramValue)
+			//foreach ($this->requestGlobalGet as $paramName => $paramValue)
 			//	$paramValue = rawurldecode($paramValue);
 			$questionMarkDelimiter = mb_strpos($targetUrl, '?') === FALSE ? '?' : $amp;
 			$targetUrl .= $questionMarkDelimiter . str_replace(

@@ -29,7 +29,7 @@ trait Preparing
 	 * @return void
 	 */
 	protected function prepare () {
-		$request = & $this->request;
+		$request = $this->request;
 
 		// store original path value for later use
 		$request->SetOriginalPath($request->GetPath(TRUE));
@@ -72,8 +72,7 @@ trait Preparing
 	protected function setUpSession () {
 		if ($this->session === NULL) {
 			$sessionClass = $this->application->GetSessionClass();
-			$selfClass = version_compare(PHP_VERSION, '5.5', '>') ? self::class : __CLASS__;
-			$this->session = $sessionClass::GetNamespace($selfClass);
+			$this->session = $sessionClass::GetNamespace(get_class());
 			$this->session->SetExpirationSeconds($this->sessionExpirationSeconds);
 		}
 	}

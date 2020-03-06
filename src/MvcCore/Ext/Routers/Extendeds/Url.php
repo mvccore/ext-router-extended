@@ -52,12 +52,12 @@ trait Url
 	 *			"/products-list/cool-product-name/blue?variant[]=L&amp;variant[]=XL", 
 	 *			["media_version" => "m", "localization" => "en-US"]
 	 *		]`
-	 * @param \MvcCore\Route|\MvcCore\IRoute & $route
+	 * @param \MvcCore\Route|\MvcCore\IRoute $route
 	 * @param array $params
 	 * @param string $urlParamRouteName
 	 * @return array `string $urlBaseSection, string $urlPathWithQuerySection, array $systemParams`
 	 */
-	protected abstract function urlByRouteSections (\MvcCore\IRoute & $route, array & $params = [], $urlParamRouteName = NULL);
+	protected abstract function urlByRouteSections (\MvcCore\IRoute $route, array & $params = [], $urlParamRouteName = NULL);
 
 	/**
 	 * Get `TRUE` if path with query string target homepage - `/` (or `/index.php` - request script name)

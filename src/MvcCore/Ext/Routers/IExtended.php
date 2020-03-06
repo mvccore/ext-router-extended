@@ -37,7 +37,7 @@ interface IExtended
 	 * @param bool $routeGetRequestsOnly 
 	 * @return \MvcCore\IRouter|\MvcCore\Ext\Routers\IExtended
 	 */
-	public function & SetRouteGetRequestsOnly ($routeGetRequestsOnly = TRUE);
+	public function SetRouteGetRequestsOnly ($routeGetRequestsOnly = TRUE);
 
 	/**
 	 * Get `TRUE` (default is `FALSE`) to prevent user to be able to switch site version 
@@ -66,7 +66,7 @@ interface IExtended
 	 * @param bool $stricModeBySession
 	 * @return \MvcCore\IRouter|\MvcCore\Ext\Routers\IExtended
 	 */
-	public function & SetStricModeBySession ($stricModeBySession = TRUE);
+	public function SetStricModeBySession ($stricModeBySession = TRUE);
 
 	/**
 	 * Get session expiration in seconds to remember previously detected site version by user
@@ -101,5 +101,5 @@ interface IExtended
 	 * @param int $sessionExpirationSeconds
 	 * @return \MvcCore\IRouter|\MvcCore\Ext\Routers\IExtended
 	 */
-	public function & SetSessionExpirationSeconds ($sessionExpirationSeconds = 0);
+	public function SetSessionExpirationSeconds ($sessionExpirationSeconds = 0);
 }

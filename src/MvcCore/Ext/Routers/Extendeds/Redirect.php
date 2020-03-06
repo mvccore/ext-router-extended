@@ -53,7 +53,7 @@ trait Redirect
 		if ($questionMarkPos !== FALSE) $targetUrl = mb_substr($targetUrl, 0, $questionMarkPos);
 		
 		/** @var $request \MvcCore\Request */
-		$request = & $this->request;
+		$request = $this->request;
 		$fullOriginalUrl = $request->GetBaseUrl() . $request->GetOriginalPath() . $request->GetQuery(TRUE);
 		
 		if ($fullOriginalUrl === $targetUrl) return TRUE;
