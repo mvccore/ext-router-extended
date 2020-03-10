@@ -133,7 +133,7 @@ trait PropsGettersSetters
 	 * @param bool $routeGetRequestsOnly 
 	 * @return \MvcCore\Router|\MvcCore\IRouter|\MvcCore\Ext\Routers\Extended|\MvcCore\Ext\Routers\IExtended
 	 */
-	public function & SetRouteGetRequestsOnly ($routeGetRequestsOnly = TRUE) {
+	public function SetRouteGetRequestsOnly ($routeGetRequestsOnly = TRUE) {
 		/** @var $this \MvcCore\Ext\Routers\IExtended */
 		$this->routeGetRequestsOnly = $routeGetRequestsOnly;
 		return $this;
@@ -168,7 +168,7 @@ trait PropsGettersSetters
 	 * @param bool $stricModeBySession
 	 * @return \MvcCore\Router|\MvcCore\IRouter|\MvcCore\Ext\Routers\Extended|\MvcCore\Ext\Routers\IExtended
 	 */
-	public function & SetStricModeBySession ($stricModeBySession = TRUE) {
+	public function SetStricModeBySession ($stricModeBySession = TRUE) {
 		/** @var $this \MvcCore\Ext\Routers\IExtended */
 		$this->stricModeBySession = $stricModeBySession;
 		return $this;
@@ -209,7 +209,7 @@ trait PropsGettersSetters
 	 * @param int $sessionExpirationSeconds
 	 * @return \MvcCore\Router|\MvcCore\IRouter|\MvcCore\Ext\Routers\Extended|\MvcCore\Ext\Routers\IExtended
 	 */
-	public function & SetSessionExpirationSeconds ($sessionExpirationSeconds = 0) {
+	public function SetSessionExpirationSeconds ($sessionExpirationSeconds = 0) {
 		/** @var $this \MvcCore\Ext\Routers\IExtended */
 		$this->sessionExpirationSeconds = $sessionExpirationSeconds;
 		return $this;
