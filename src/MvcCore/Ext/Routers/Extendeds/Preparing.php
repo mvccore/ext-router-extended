@@ -29,6 +29,7 @@ trait Preparing
 	 * @return void
 	 */
 	protected function prepare () {
+		/** @var $this \MvcCore\Ext\Routers\Extended */
 		$request = $this->request;
 
 		// store original path value for later use
@@ -70,6 +71,7 @@ trait Preparing
 	 * @return void
 	 */
 	protected function setUpSession () {
+		/** @var $this \MvcCore\Ext\Routers\Extended */
 		if ($this->session === NULL) {
 			$sessionClass = $this->application->GetSessionClass();
 			$this->session = $sessionClass::GetNamespace(get_class());

@@ -65,6 +65,7 @@ trait Url
 	 * @return bool
 	 */
 	protected function urlIsHomePath ($pathWithQueryString) {
+		/** @var $this \MvcCore\Ext\Routers\Extended */
 		$questionMarkPos = mb_strpos($pathWithQueryString, '?');
 		$pathWithoutQueryString = $questionMarkPos !== FALSE 
 			? mb_substr($pathWithQueryString, 0, $questionMarkPos)
@@ -94,6 +95,7 @@ trait Url
 	 * @return string
 	 */
 	protected function urlByRoutePrefixSystemParams ($urlBaseSection, $urlPathWithQuerySection, array $systemParams = [], $urlPathWithQueryIsHome = NULL) {
+		/** @var $this \MvcCore\Ext\Routers\Extended */
 		// complete prefixes section from system params
 		$urlPrefixesSection = trim(implode('/', array_values($systemParams)), '/');
 		$urlPrefixesSectionHasValue = $urlPrefixesSection !== '';

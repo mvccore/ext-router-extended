@@ -32,6 +32,7 @@ trait RedirectHelpers
 	 * @return void
 	 */
 	protected function removeDefaultCtrlActionFromGlobalGet () {
+		/** @var $this \MvcCore\Ext\Routers\Extended */
 		if ($this->requestGlobalGet) {
 			$toolClass = $this->application->GetToolClass();
 			list($dfltCtrlPc, $dftlActionPc) = $this->application->GetDefaultControllerAndActionNames();
@@ -51,6 +52,7 @@ trait RedirectHelpers
 	 * @param string $targetUrl 
 	 */
 	protected function redirectAddAllRemainingInGlobalGet (& $targetUrl) {
+		/** @var $this \MvcCore\Ext\Routers\Extended */
 		if ($this->requestGlobalGet) {
 			$amp = $this->getQueryStringParamsSepatator();
 			//foreach ($this->requestGlobalGet as $paramName => $paramValue)

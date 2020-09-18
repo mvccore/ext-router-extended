@@ -38,6 +38,7 @@ trait Redirect
 	 * @return bool
 	 */
 	protected function redirectToVersion ($systemParams) {
+		/** @var $this \MvcCore\Ext\Routers\Extended */
 		// get domain with base path url section, 
 		// path with query string url section 
 		// system params for url prefixes
