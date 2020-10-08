@@ -39,7 +39,11 @@ trait Preparing
 		// will be only by GET method, other methods are not very useful 
 		// to localize or target for media site version. It adds only another
 		// not much useful route records to route processing:
-		$this->isGet = $request->GetMethod() == \MvcCore\IRequest::METHOD_GET;
+		$method = $request->GetMethod();
+		$this->isGet = (
+			$method == \MvcCore\IRequest::METHOD_GET ||
+			$method == \MvcCore\IRequest::METHOD_HEAD
+		);
 		
 		// look into request params if there is any switching 
 		// parameter for session strict mode
