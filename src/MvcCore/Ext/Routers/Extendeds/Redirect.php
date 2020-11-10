@@ -38,7 +38,7 @@ trait Redirect
 	 * @return bool
 	 */
 	protected function redirectToVersion ($systemParams) {
-		/** @var $this \MvcCore\Ext\Routers\Extended */
+		/** @var $this \MvcCore\Ext\Routers\Extended|\MvcCore\Router */
 		// get domain with base path url section, 
 		// path with query string url section 
 		// system params for url prefixes
@@ -49,7 +49,7 @@ trait Redirect
 		$targetUrl = $this->urlByRoutePrefixSystemParams(
 			$urlBaseSection, $urlPathWithQuerySection, $systemParams, $urlPathWithQueryIsHome
 		);
-		
+
 		$questionMarkPos = mb_strpos($targetUrl, '?');
 		if ($questionMarkPos !== FALSE) $targetUrl = mb_substr($targetUrl, 0, $questionMarkPos);
 		
@@ -58,7 +58,7 @@ trait Redirect
 		$fullOriginalUrl = $request->GetBaseUrl() . $request->GetOriginalPath() . $request->GetQuery(TRUE);
 		
 		if ($fullOriginalUrl === $targetUrl) return TRUE;
-
+		
 		$this->redirect($targetUrl, $this->redirectStatusCode, 'Extended router redirect');
 
 		return FALSE;
