@@ -7,8 +7,8 @@
  * For the full copyright and license information, please view
  * the LICENSE.md file that are distributed with this source code.
  *
- * @copyright	Copyright (c) 2016 Tom Flídr (https://github.com/mvccore/mvccore)
- * @license		https://mvccore.github.io/docs/mvccore/4.0.0/LICENCE.md
+ * @copyright	Copyright (c) 2016 Tom Flidr (https://github.com/mvccore)
+ * @license		https://mvccore.github.io/docs/mvccore/5.0.0/LICENCE.md
  */
 
 namespace MvcCore\Ext\Routers;
@@ -22,8 +22,15 @@ namespace MvcCore\Ext\Routers;
  * - `\MvcCore\Ext\Routers\Localization`
  * - `\MvcCore\Ext\Routers\MediaAndLocalization`
  */
-interface IExtended
-{
+interface IExtended {
+	
+	/**
+	 * MvcCore Extension - Router - Extended - version:
+	 * Comparison by PHP function version_compare();
+	 * @see http://php.net/manual/en/function.version-compare.php
+	 */
+	const VERSION = '5.0.0';
+
 	/**
 	 * Get `TRUE` to route site version only for `GET` requests. 
 	 * `FALSE` to process advanced routing on all requests.
@@ -35,7 +42,7 @@ interface IExtended
 	 * Set `TRUE` to route site version only for `GET` requests. 
 	 * `FALSE` to process advanced routing on all requests.
 	 * @param bool $routeGetRequestsOnly 
-	 * @return \MvcCore\IRouter|\MvcCore\Ext\Routers\IExtended
+	 * @return \MvcCore\Router|\MvcCore\Ext\Routers\Extended
 	 */
 	public function SetRouteGetRequestsOnly ($routeGetRequestsOnly = TRUE);
 
@@ -64,7 +71,7 @@ interface IExtended
 	 * key with different site version:
 	 * `$this->Url('self', ['media_version' => 'mobile', 'lang'	=> 'de']);`.
 	 * @param bool $stricModeBySession
-	 * @return \MvcCore\IRouter|\MvcCore\Ext\Routers\IExtended
+	 * @return \MvcCore\Router|\MvcCore\Ext\Routers\Extended
 	 */
 	public function SetStricModeBySession ($stricModeBySession = TRUE);
 
@@ -99,7 +106,7 @@ interface IExtended
 	 * url switch param (always automatically added by `Url()` method). Because without it, 
 	 * user is redirected strictly back into the same version.
 	 * @param int $sessionExpirationSeconds
-	 * @return \MvcCore\IRouter|\MvcCore\Ext\Routers\IExtended
+	 * @return \MvcCore\Router|\MvcCore\Ext\Routers\Extended
 	 */
 	public function SetSessionExpirationSeconds ($sessionExpirationSeconds = 0);
 }

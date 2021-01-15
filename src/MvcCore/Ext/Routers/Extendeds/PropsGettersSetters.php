@@ -7,8 +7,8 @@
  * For the full copyright and license information, please view
  * the LICENSE.md file that are distributed with this source code.
  *
- * @copyright	Copyright (c) 2016 Tom Flídr (https://github.com/mvccore/mvccore)
- * @license		https://mvccore.github.io/docs/mvccore/4.0.0/LICENCE.md
+ * @copyright	Copyright (c) 2016 Tom Flidr (https://github.com/mvccore)
+ * @license		https://mvccore.github.io/docs/mvccore/5.0.0/LICENCE.md
  */
 
 namespace MvcCore\Ext\Routers\Extendeds;
@@ -22,8 +22,8 @@ namespace MvcCore\Ext\Routers\Extendeds;
  * - `\MvcCore\Ext\Routers\Localization`
  * - `\MvcCore\Ext\Routers\MediaAndLocalization`
  */
-trait PropsGettersSetters
-{
+trait PropsGettersSetters {
+
 	/**
 	 * `TRUE` (default is `FALSE`) to prevent user to be able to switch site version 
 	 * only by requesting different url with different site version prefix. If he does it
@@ -103,7 +103,7 @@ trait PropsGettersSetters
 	/**
 	 * Session namespace to store previously recognized site version by user agent
 	 * or by http headers to not do this every time, because it's time consuming.
-	 * @var \MvcCore\Session|\MvcCore\ISession|NULL
+	 * @var \MvcCore\Session|NULL
 	 */
 	protected $session = NULL;
 
@@ -132,7 +132,7 @@ trait PropsGettersSetters
 	 * Set `TRUE` to route site version only for `GET` requests. 
 	 * `FALSE` to process advanced routing on all requests.
 	 * @param bool $routeGetRequestsOnly 
-	 * @return \MvcCore\Router|\MvcCore\IRouter|\MvcCore\Ext\Routers\Extended|\MvcCore\Ext\Routers\IExtended
+	 * @return \MvcCore\Router|\MvcCore\Ext\Routers\Extended
 	 */
 	public function SetRouteGetRequestsOnly ($routeGetRequestsOnly = TRUE) {
 		/** @var $this \MvcCore\Ext\Routers\Extended */
@@ -168,7 +168,7 @@ trait PropsGettersSetters
 	 * key with different site version:
 	 * `$this->Url('self', ['media_version' => 'mobile', 'lang'	=> 'de']);`.
 	 * @param bool $stricModeBySession
-	 * @return \MvcCore\Router|\MvcCore\IRouter|\MvcCore\Ext\Routers\Extended|\MvcCore\Ext\Routers\IExtended
+	 * @return \MvcCore\Router|\MvcCore\Ext\Routers\Extended
 	 */
 	public function SetStricModeBySession ($stricModeBySession = TRUE) {
 		/** @var $this \MvcCore\Ext\Routers\Extended */
@@ -210,7 +210,7 @@ trait PropsGettersSetters
 	 * url switch param (always automatically added by `Url()` method). Because without it, 
 	 * user is redirected strictly back into the same version.
 	 * @param int $sessionExpirationSeconds
-	 * @return \MvcCore\Router|\MvcCore\IRouter|\MvcCore\Ext\Routers\Extended|\MvcCore\Ext\Routers\IExtended
+	 * @return \MvcCore\Router|\MvcCore\Ext\Routers\Extended
 	 */
 	public function SetSessionExpirationSeconds ($sessionExpirationSeconds = 0) {
 		/** @var $this \MvcCore\Ext\Routers\Extended */
