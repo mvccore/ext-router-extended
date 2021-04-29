@@ -11,7 +11,7 @@
  * @license		https://mvccore.github.io/docs/mvccore/5.0.0/LICENSE.md
  */
 
-namespace MvcCore\Ext\Routers\Extendeds;
+namespace MvcCore\Ext\Routers\Extended;
 
 /**
  * Responsibility: configurable protected properties with getters and setters,
@@ -21,6 +21,7 @@ namespace MvcCore\Ext\Routers\Extendeds;
  * - `\MvcCore\Ext\Routers\Media`
  * - `\MvcCore\Ext\Routers\Localization`
  * - `\MvcCore\Ext\Routers\MediaAndLocalization`
+ * @mixin \MvcCore\Ext\Routers\Extended
  */
 trait RedirectHelpers {
 
@@ -32,7 +33,6 @@ trait RedirectHelpers {
 	 * @return void
 	 */
 	protected function removeDefaultCtrlActionFromGlobalGet () {
-		/** @var $this \MvcCore\Ext\Routers\Extended */
 		if ($this->requestGlobalGet) {
 			$toolClass = $this->application->GetToolClass();
 			list($dfltCtrlPc, $dftlActionPc) = $this->application->GetDefaultControllerAndActionNames();
@@ -52,7 +52,6 @@ trait RedirectHelpers {
 	 * @param string $targetUrl 
 	 */
 	protected function redirectAddAllRemainingInGlobalGet (& $targetUrl) {
-		/** @var $this \MvcCore\Ext\Routers\Extended */
 		if ($this->requestGlobalGet) {
 			$amp = $this->getQueryStringParamsSepatator();
 			//foreach ($this->requestGlobalGet as $paramName => $paramValue)

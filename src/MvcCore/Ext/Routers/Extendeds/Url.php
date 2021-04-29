@@ -11,7 +11,7 @@
  * @license		https://mvccore.github.io/docs/mvccore/5.0.0/LICENSE.md
  */
 
-namespace MvcCore\Ext\Routers\Extendeds;
+namespace MvcCore\Ext\Routers\Extended;
 
 /**
  * Responsibility: configurable protected properties with getters and setters,
@@ -21,6 +21,7 @@ namespace MvcCore\Ext\Routers\Extendeds;
  * - `\MvcCore\Ext\Routers\Media`
  * - `\MvcCore\Ext\Routers\Localization`
  * - `\MvcCore\Ext\Routers\MediaAndLocalization`
+ * @mixin \MvcCore\Ext\Routers\Extended
  */
 trait Url {
 
@@ -65,7 +66,6 @@ trait Url {
 	 * @return bool
 	 */
 	protected function urlIsHomePath ($pathWithQueryString) {
-		/** @var $this \MvcCore\Ext\Routers\Extended */
 		$questionMarkPos = mb_strpos($pathWithQueryString, '?');
 		$pathWithoutQueryString = $questionMarkPos !== FALSE 
 			? mb_substr($pathWithQueryString, 0, $questionMarkPos)
@@ -95,7 +95,6 @@ trait Url {
 	 * @return string
 	 */
 	protected function urlByRoutePrefixSystemParams ($urlBaseSection, $urlPathWithQuerySection, array $systemParams = [], $urlPathWithQueryIsHome = NULL) {
-		/** @var $this \MvcCore\Ext\Routers\Extended */
 		// complete prefixes section from system params
 		$urlPrefixesSection = trim(implode('/', array_values($systemParams)), '/');
 		$urlPrefixesSectionHasValue = $urlPrefixesSection !== '';

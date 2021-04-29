@@ -24,9 +24,9 @@ namespace MvcCore\Ext\Routers;
  */
 trait Extended {
 
-	use \MvcCore\Ext\Routers\Extendeds\PropsGettersSetters;
-	use \MvcCore\Ext\Routers\Extendeds\Preparing;
-	use \MvcCore\Ext\Routers\Extendeds\RedirectHelpers;
-	use \MvcCore\Ext\Routers\Extendeds\Redirect;
-	use \MvcCore\Ext\Routers\Extendeds\Url;
+	use \MvcCore\Ext\Routers\Extended\PropsGettersSetters;
+	use \MvcCore\Ext\Routers\Extended\Preparing;
+	use \MvcCore\Ext\Routers\Extended\RedirectHelpers;
+	use \MvcCore\Ext\Routers\Extended\Redirect;
+	use \MvcCore\Ext\Routers\Extended\Url;
 }

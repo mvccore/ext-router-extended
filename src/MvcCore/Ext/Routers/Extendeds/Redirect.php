@@ -11,7 +11,7 @@
  * @license		https://mvccore.github.io/docs/mvccore/5.0.0/LICENSE.md
  */
 
-namespace MvcCore\Ext\Routers\Extendeds;
+namespace MvcCore\Ext\Routers\Extended;
 
 /**
  * Responsibility: configurable protected properties with getters and setters,
@@ -21,6 +21,7 @@ namespace MvcCore\Ext\Routers\Extendeds;
  * - `\MvcCore\Ext\Routers\Media`
  * - `\MvcCore\Ext\Routers\Localization`
  * - `\MvcCore\Ext\Routers\MediaAndLocalization`
+ * @mixin \MvcCore\Ext\Routers\Extended
  */
 trait Redirect {
 
@@ -38,7 +39,6 @@ trait Redirect {
 	 * @return bool
 	 */
 	protected function redirectToVersion ($systemParams) {
-		/** @var $this \MvcCore\Ext\Routers\Extended|\MvcCore\Router */
 		// get domain with base path url section, 
 		// path with query string url section 
 		// system params for url prefixes
@@ -53,7 +53,7 @@ trait Redirect {
 		$questionMarkPos = mb_strpos($targetUrl, '?');
 		if ($questionMarkPos !== FALSE) $targetUrl = mb_substr($targetUrl, 0, $questionMarkPos);
 		
-		/** @var $request \MvcCore\Request */
+		/** @var \MvcCore\Request $request */
 		$request = $this->request;
 		$fullOriginalUrl = $request->GetBaseUrl() . $request->GetOriginalPath() . $request->GetQuery(TRUE);
 		
