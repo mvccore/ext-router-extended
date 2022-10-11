@@ -67,14 +67,7 @@ trait PropsGettersSetters {
 	 * admin requests: `\MvcCore\Ext\Auth::GetInstance()->GetUser();`.
 	 * @var string
 	 */
-	protected static $baseAuthClass = '\MvcCore\Ext\Auth';
-
-	/**
-	 * Administration request query string param name to recognize administration
-	 * requests if this param exists in global `$_GET` array. `admin` by default.
-	 * @var string
-	 */
-	protected static $adminRequestQueryParamName = 'admin';
+	protected static $baseAuthClass = "\\MvcCore\\Ext\\Auth";
 
 	/**
 	 * Boolean flag if request is in administration or not. `FALSE` by default.
@@ -120,6 +113,25 @@ trait PropsGettersSetters {
 	 ************************************************************************************/
 
 	/**
+	 * Get boolean flag if request is in administration or not. `FALSE` by default.
+	 * @return bool
+	 */
+	public function GetAdminRequest () {
+		return $this->adminRequest;
+	}
+
+	/**
+	 * Set boolean flag if request is in administration or not. `FALSE` by default.
+	 * @param  bool $adminRequest 
+	 * @return \MvcCore\Router|\MvcCore\Ext\Routers\Extended
+	 */
+	public function SetAdminRequest ($adminRequest = TRUE) {
+		$this->adminRequest = $adminRequest;
+		return $this;
+	}
+
+
+	/**
 	 * Get `TRUE` to route site version only for `GET` requests. 
 	 * `FALSE` to process advanced routing on all requests.
 	 * @return bool
@@ -131,7 +143,7 @@ trait PropsGettersSetters {
 	/**
 	 * Set `TRUE` to route site version only for `GET` requests. 
 	 * `FALSE` to process advanced routing on all requests.
-	 * @param bool $routeGetRequestsOnly 
+	 * @param  bool $routeGetRequestsOnly 
 	 * @return \MvcCore\Router|\MvcCore\Ext\Routers\Extended
 	 */
 	public function SetRouteGetRequestsOnly ($routeGetRequestsOnly = TRUE) {
@@ -165,7 +177,7 @@ trait PropsGettersSetters {
 	 * or in template, it's added automatically, when you put into second argument `$params` 
 	 * key with different site version:
 	 * `$this->Url('self', ['media_version' => 'mobile', 'lang'	=> 'de']);`.
-	 * @param bool $stricModeBySession
+	 * @param  bool $stricModeBySession
 	 * @return \MvcCore\Router|\MvcCore\Ext\Routers\Extended
 	 */
 	public function SetStricModeBySession ($stricModeBySession = TRUE) {
@@ -205,7 +217,7 @@ trait PropsGettersSetters {
 	 * than to redirect user into new site version, there is necessary to add special 
 	 * url switch param (always automatically added by `Url()` method). Because without it, 
 	 * user is redirected strictly back into the same version.
-	 * @param int $sessionExpirationSeconds
+	 * @param  int $sessionExpirationSeconds
 	 * @return \MvcCore\Router|\MvcCore\Ext\Routers\Extended
 	 */
 	public function SetSessionExpirationSeconds ($sessionExpirationSeconds = 0) {

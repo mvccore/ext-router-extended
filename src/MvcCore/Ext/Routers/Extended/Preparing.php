@@ -58,7 +58,7 @@ trait Preparing {
 		// is used only to not process strict session mode redirections and to serve
 		// requested documents directly, so there is not necessary to check if user
 		// has any privileges or not, because this is only router.
-		if (isset($this->requestGlobalGet[static::$adminRequestQueryParamName])) {
+		if (isset($this->requestGlobalGet[static::URL_PARAM_ADMIN_REQUEST])) {
 			$authClass = static::$baseAuthClass;
 			if (class_exists($authClass)) {
 				$user = $authClass::GetInstance()->GetUser();

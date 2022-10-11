@@ -32,6 +32,26 @@ interface IExtended {
 	// const VERSION = '5.0.0';
 
 	/**
+	 * Administration request query string param name to recognize administration
+	 * requests if this param exists in global `$_GET` array. `admin` by default.
+	 * @var string
+	 */
+	const URL_PARAM_ADMIN_REQUEST = 'admin';
+
+	/**
+	 * Get boolean flag if request is in administration or not. `FALSE` by default.
+	 * @return bool
+	 */
+	public function GetAdminRequest ();
+
+	/**
+	 * Set boolean flag if request is in administration or not. `FALSE` by default.
+	 * @param  bool $adminRequest 
+	 * @return \MvcCore\Router|\MvcCore\Ext\Routers\Extended
+	 */
+	public function SetAdminRequest ($adminRequest = TRUE);
+
+	/**
 	 * Get `TRUE` to route site version only for `GET` requests. 
 	 * `FALSE` to process advanced routing on all requests.
 	 * @return bool
@@ -41,7 +61,7 @@ interface IExtended {
 	/**
 	 * Set `TRUE` to route site version only for `GET` requests. 
 	 * `FALSE` to process advanced routing on all requests.
-	 * @param bool $routeGetRequestsOnly 
+	 * @param  bool $routeGetRequestsOnly 
 	 * @return \MvcCore\Router|\MvcCore\Ext\Routers\Extended
 	 */
 	public function SetRouteGetRequestsOnly ($routeGetRequestsOnly = TRUE);
@@ -70,7 +90,7 @@ interface IExtended {
 	 * or in template, it's added automatically, when you put into second argument `$params` 
 	 * key with different site version:
 	 * `$this->Url('self', ['media_version' => 'mobile', 'lang'	=> 'de']);`.
-	 * @param bool $stricModeBySession
+	 * @param  bool $stricModeBySession
 	 * @return \MvcCore\Router|\MvcCore\Ext\Routers\Extended
 	 */
 	public function SetStricModeBySession ($stricModeBySession = TRUE);
@@ -105,7 +125,7 @@ interface IExtended {
 	 * than to redirect user into new site version, there is necessary to add special 
 	 * url switch param (always automatically added by `Url()` method). Because without it, 
 	 * user is redirected strictly back into the same version.
-	 * @param int $sessionExpirationSeconds
+	 * @param  int $sessionExpirationSeconds
 	 * @return \MvcCore\Router|\MvcCore\Ext\Routers\Extended
 	 */
 	public function SetSessionExpirationSeconds ($sessionExpirationSeconds = 0);
