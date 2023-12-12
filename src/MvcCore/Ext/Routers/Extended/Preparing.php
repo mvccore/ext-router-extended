@@ -77,7 +77,7 @@ trait Preparing {
 	protected function setUpSession () {
 		if ($this->session === NULL) {
 			$sessionClass = $this->application->GetSessionClass();
-			$this->session = $sessionClass::GetNamespace(get_class());
+			$this->session = $sessionClass::GetNamespace(get_class($this));
 			$this->session->SetExpirationSeconds($this->sessionExpirationSeconds);
 		}
 	}
