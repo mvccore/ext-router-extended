@@ -29,7 +29,7 @@ interface IExtended {
 	 * Comparison by PHP function version_compare();
 	 * @see http://php.net/manual/en/function.version-compare.php
 	 */
-	// const VERSION = '5.0.2';
+	// const VERSION = '5.2.0';
 
 	/**
 	 * Administration request query string param name to recognize administration
