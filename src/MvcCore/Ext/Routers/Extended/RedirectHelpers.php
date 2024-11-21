@@ -53,13 +53,12 @@ trait RedirectHelpers {
 	 */
 	protected function redirectAddAllRemainingInGlobalGet (& $targetUrl) {
 		if ($this->requestGlobalGet) {
-			$amp = $this->getQueryStringParamsSepatator();
 			//foreach ($this->requestGlobalGet as $paramName => $paramValue)
 			//	$paramValue = rawurldecode($paramValue);
-			$questionMarkDelimiter = mb_strpos($targetUrl, '?') === FALSE ? '?' : $amp;
+			$questionMarkDelimiter = mb_strpos($targetUrl, '?') === FALSE ? '?' : '&amp;';
 			$targetUrl .= $questionMarkDelimiter . str_replace(
 				'%2F', '/', 
-				http_build_query($this->requestGlobalGet, '', $amp, PHP_QUERY_RFC3986)
+				http_build_query($this->requestGlobalGet, '', '&amp;', PHP_QUERY_RFC3986)
 			);
 		}
 	}
